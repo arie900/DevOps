@@ -1,0 +1,27 @@
+{
+    "data": [
+        {
+            "last_seen": "2020-07-04T11:00:01.322318+00:00",
+            "state": {
+                "attributes": {
+                    "editable": true,
+                    "friendly_name": "arie",
+                    "id": "arie",
+                    "source": "person.arie",
+                    "user_id": "505e70b2aada4542b08c2d8c0153185d"
+                },
+                "context": {
+                    "id": "0f93a34d84d64ca5980c986e50976b84",
+                    "parent_id": null,
+                    "user_id": null
+                },
+                "entity_id": "person.arie",
+                "last_changed": "2020-07-04T10:59:54.549491+00:00",
+                "last_updated": "2020-07-04T10:59:54.549491+00:00",
+                "state": "unknown"
+            }
+        }
+    ],
+    "key": "core.restore_state",
+    "version": 1
+}

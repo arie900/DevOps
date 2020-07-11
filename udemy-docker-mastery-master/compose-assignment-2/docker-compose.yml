@@ -1,0 +1,43 @@
+# create your drupal and postgres config here, based off the last assignment
+
+
+version: '3.1' #must be version 3.1
+
+services:
+
+  drupal: #service name\dns
+    image: drupal:8.2 #Required image
+    ports:
+      - 8080:80 #Whick port i want to expose
+    volumes: #Volumes for the container
+      - drupal-modules:/var/www/html/modules
+      - drupal-profiles:/var/www/html/profiles       
+      - drupal-sites:/var/www/html/sites      
+      - drupal-themes:/var/www/html/themes
+  
+  
+  postgres: #service name\dns
+    image: postgres:12.1 #Required image
+    volumes: #Volumes for the container
+      - drupal-data:/var/lib/postgresql/data
+    secrets: #Secrets password and user name for containers
+      - postgres_user
+      - postgres_pass
+    environment: #insert the password and user to image
+    - POSTGRES_PASSWORD_FILE=/run/secrets/postgres_pass
+    - POSTGRES_USER_FILE=/run/secrets/postgres_user
+
+
+volumes :
+   drupal-data:
+   drupal-modules:
+   drupal-profiles:
+   drupal-sites:
+   drupal-themes:
+
+
+secrets : #define secrets 
+  postgres_user : #secret name
+    external: true #Secrets already created
+  postgres_pass: 
+    external: true

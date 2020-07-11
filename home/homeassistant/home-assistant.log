@@ -1,0 +1,2 @@
+2020-07-04 10:59:54 WARNING (MainThread) [homeassistant.components.webostv] LG webOS TV 192.168.14.111 needs to be paired
+2020-07-04 11:00:01 ERROR (MainThread) [homeassistant.components.webostv] Unable to connect to host 192.168.14.111

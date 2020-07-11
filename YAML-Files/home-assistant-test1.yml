@@ -1,0 +1,36 @@
+apiVersion: app/v1
+kind: Deployment
+metadata: 
+    name: home-assistant
+    namespace: home-assistant
+    labels:
+        name: home-assistant
+spec: 
+    replicas: 3
+    selector:
+        matchLabels:
+            name: home-assistant
+    template:
+        metadata:
+            labels:
+                app: home-assistant
+    spec:
+        containers:  
+        - name: home-assistant
+        image: homeassistant/home-assistant:stable
+        ports:
+        - containerPort:  8123
+        volumeMounts:
+        - mountPath: ./homeassistant
+                name: homeassistant
+        - mounthPath: ./homeassistant/configuration.yaml
+                name: config
+        volumes: 
+        - name: homeassistant
+        hostPath: 
+            path: /C/Users/Arie/homeassistant
+            type: DirectoryOrCreate
+        - name: config
+        hostPath:
+            path: /C/Users/Arie/homeassistant/configuration.yaml
+            type: FileOrCreate
