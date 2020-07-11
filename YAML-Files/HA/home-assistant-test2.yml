@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: home-assistant
-  namespace: home-assistant
+  namespace: default
   labels:
     name: home-assistant
 spec:
@@ -12,17 +12,17 @@ spec:
     ports:
     - containerPort:  8123
     volumeMounts:
-    - mountPath: ./config
+    - mountPath: /home/arie/homeassistans
       name: homeassistant
-#    - mountPath: ./homeassistant/configuration.yaml
-#      name: config
+    - mountPath: /home/arie/homeassistans/configuration.yaml
+      name: config
   volumes:
   - name: homeassistant
     hostPath:
       # Ensure the file directory is created.
-      path: /C/Users/Arie/homeassistant
+      path: /home/arie/homeassistans
       type: DirectoryOrCreate
-#  - name: config
-#    hostPath:
-#        path: /C/Users/Arie/homeassistant/configuration.yaml
-#        type: FileOrCreate
+  - name: config
+    hostPath:
+        path: /home/arie/homeassistans/configuration.yaml
+        type: FileOrCreate
